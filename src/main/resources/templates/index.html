@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h1>Upload de arquivos - Universidade La Salle</h1>
+
+<hr/>
+
+<h4>Upload de único arquivo:</h4>
+<form method="POST" enctype="multipart/form-data" th:action="@{/upload-file}">
+    <input type="file" name="file"> <br/><br/>
+    <button type="submit">Submit</button>
+</form>
+
+<hr/>
+
+<h4>Upload múltiplos arquivos:</h4>
+<form method="POST" enctype="multipart/form-data" th:action="@{/upload-multiple-files}">
+    <input type="file" name="files" multiple> <br/><br/>
+    <button type="submit">Submit</button>
+</form>
+
+<hr/>
+
+<h2>Todos os arquivos carregados:</h2>
+<ul>
+    <li th:each="file : ${files}">
+        <a th:href="${file}" target="_blank" th:text="${file}"></a>
+    </li>
+</ul>
+
+</body>
+</html>
